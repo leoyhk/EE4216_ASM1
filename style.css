@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #23272a;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.cards {
+  background-color: black;
+  width: 50%;
+  height: 75%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  border: 1px;
+  border-radius: 1rem;
+  padding: 4 0px;
+}
+
+.card {
+  position: relative;
+  flex: 1 1 15%;
+  height: 20%;
+  display: flex;
+  background-color: #ffffff90;
+  aspect-ratio: 1/1.4;
+  border-radius: 1rem;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  margin: 4px;`
+}
+
+/* .cards :nth-child(n) {
+  background-color: ;
+}
+
+.cards :nth-child(2n) {
+  background-color: green;
+}
+.cards :nth-child(3n) {
+  background-color: yellow;
+} */
