@@ -9,6 +9,7 @@ const score = document.getElementById("score");
 var clickCount = 0;
 var roundCount = 1;
 var cardValue = [0, 0, 0];
+let timer = null;
 
 cards.addEventListener("click", (e) => {
   //handles clicking on cards
@@ -83,6 +84,10 @@ input.addEventListener("keydown", (e) => {
 });
 
 function handleInput(value) {
+  //Prevent Spamming
+  if (timer) {
+    clearInterval(timer);
+  }
   // Early Return if the user input a string
   if (isNaN(value)) {
     // console.log("String is detected");
@@ -96,17 +101,15 @@ function handleInput(value) {
       `Wrong Input ! Your input was ${value}, which is not a multiple of 3!`
     );
   } else {
-    //Start Timer
-    time.innerHTML = 0;
-    timer = window.setInterval(function () {
-      time.innerHTML = parseInt(time.innerHTML, 10) + 1;
-    }, 1000);
     //Generate Cards and Shuffle
     createCards(value);
     shuffleCards();
     score.innerHTML = 0;
-    time.innerHTML = 0;
     round.innerHTML = 1;
+
+    //Start Timer
+    time.innerHTML = 360;
+    timer = window.setInterval(_time, 1000);
   }
 }
 
@@ -160,4 +163,18 @@ function shuffleCards() {
     element.style.order = Math.floor(randomOrder).toString();
     // console.log(randomOrder);
   });
+}
+
+function _time() {
+  // console.log(timer);
+  if (parseInt(time.innerHTML) <= 0) {
+    clearInterval(timer);
+    var __card__ = document.querySelectorAll(".card");
+    __card__.forEach((element) => {
+      element.style["pointer-events"] = "none";
+    });
+    alert("Oh No! Time's Up!");
+  } else {
+    time.innerHTML = parseInt(time.innerHTML, 10) - 1;
+  }
 }
