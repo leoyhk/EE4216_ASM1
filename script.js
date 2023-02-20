@@ -8,19 +8,29 @@ console.log(input);
 
 const time = document.getElementById("time");
 const round = document.getElementById("round");
+const score = document.getElementById("score");
+console.log(score);
 
 var clickCount = 0;
 var roundCount = 1;
+var cardValue = [0, 0, 0];
 
 cards.addEventListener("click", (e) => {
   //handles clicking on cards
   console.log(e.srcElement);
   var target = e.srcElement;
+
+  //Flips card to Front and add Count
   if (target.className === "card back") {
     target.className = "card front";
     clickCount++;
+
+    //Saves Selected Value on Flip
+    cardValue[clickCount - 1] = parseInt(target.innerText);
+    console.log(cardValue);
   }
 
+  //Resets Card and Starts New Round
   if (clickCount === 3) {
     console.log(`New Round !`);
     roundCount++;
@@ -28,11 +38,28 @@ cards.addEventListener("click", (e) => {
     clickCount = 0;
     var flippedCards = document.querySelectorAll(".card.front");
     console.log(flippedCards);
-    setTimeout(() => {
-      flippedCards.forEach((element) => {
-        element.className = "card back";
-      });
-    }, 1000);
+
+    //Flips card from front to back
+    if (cardValue.every((v) => v === cardValue[0])) {
+      //Triple is Found
+      setTimeout(() => {
+        flippedCards.forEach((element) => {
+          element.style = "display: none";
+        });
+        //Adds Score
+        score.innerHTML = parseInt(score.innerText + 300);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        flippedCards.forEach((element) => {
+          element.className = "card back";
+        });
+        score.innerHTML = parseInt(score.innerText - 100);
+      }, 1000);
+    }
+
+    //Resets Memory
+    cardValue = [0, 0, 0];
   }
 });
 
@@ -113,4 +140,8 @@ function createCards(numberOfCards) {
     );
   });
   console.log(document.getElementsByClassName("card back"));
+}
+
+function shuffleCards() {
+  __card__ = document.querySelectorAll(".card");
 }
