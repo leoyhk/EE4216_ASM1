@@ -44,17 +44,17 @@ cards.addEventListener("click", (e) => {
       //Triple is Found
       setTimeout(() => {
         flippedCards.forEach((element) => {
-          element.style = "display: none";
+          cards.removeChild(element);
         });
         //Adds Score
-        score.innerHTML = parseInt(score.innerText + 300);
+        score.innerHTML = parseInt(score.innerHTML, 10) + 300;
       }, 1000);
     } else {
       setTimeout(() => {
         flippedCards.forEach((element) => {
           element.className = "card back";
         });
-        score.innerHTML = parseInt(score.innerText - 100);
+        score.innerHTML = parseInt(score.innerHTML, 10) - 100;
       }, 1000);
     }
 
