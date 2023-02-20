@@ -7,8 +7,10 @@ const input = document.getElementById("number-of-cards");
 console.log(input);
 
 const time = document.getElementById("time");
+const round = document.getElementById("round");
 
 var clickCount = 0;
+var roundCount = 1;
 
 cards.addEventListener("click", (e) => {
   //handles clicking on cards
@@ -21,6 +23,8 @@ cards.addEventListener("click", (e) => {
 
   if (clickCount === 3) {
     console.log(`New Round !`);
+    roundCount++;
+    round.innerHTML = roundCount;
     clickCount = 0;
     var flippedCards = document.querySelectorAll(".card.front");
     console.log(flippedCards);
@@ -104,7 +108,7 @@ function createCards(numberOfCards) {
     element.appendChild(
       Object.assign(document.createElement("div"), {
         className: "front",
-        innerHTML: "1",
+        innerHTML: `${Math.floor(i / 3 + 1)}`,
       })
     );
   });

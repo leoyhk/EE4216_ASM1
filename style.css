@@ -65,10 +65,15 @@ body,
   border-radius: 1rem;
   cursor: pointer;
 }
+.card {
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
 
-.card:hover {
-  background-color: #fdfff5;
-  transition: 0.5s;
+.card.back {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
 }
 
 .information {
@@ -77,10 +82,14 @@ body,
 }
 
 .card.front {
+  transform: rotateY(0.5turn);
   pointer-events: none;
   background-color: #fdfff5;
   border: 2px;
   border-color: #738adb;
+}
+.card.front > div {
+  transform: rotateY(-0.5turn);
 }
 
 .card.back > div:nth-child(2) {
