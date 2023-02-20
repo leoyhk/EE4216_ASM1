@@ -59,9 +59,8 @@ body,
 
 .cards .card {
   background-color: #738adb;
-  height: calc(100% / 3 - 10px);
-  width: calc(100% / 3 - 10px);
-  margin: 4px;
+
+  margin: 2px;
   border: 1px;
   border-radius: 1rem;
   cursor: pointer;
@@ -77,8 +76,19 @@ body,
   justify-content: space-around;
 }
 
+.card.back > div:nth-child(2) {
+  display: none;
+}
+
+.card.front > div {
+  display: block;
+}
+.card.front > div:nth-child(1) {
+  display: none;
+}
+
 #input {
-  width: 50%;
+  width: 35%;
   margin: 2px;
   flex-direction: column;
   align-self: center;
