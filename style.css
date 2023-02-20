@@ -2,56 +2,88 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+.content {
   margin: 0;
   background-color: #23272a;
+  display: flex;
   width: 100vw;
   height: 100vh;
-  display: flex;
   align-items: center;
-
+  justify-content: center;
 }
-
 ::-webkit-scrollbar {
   display: none;
 }
 
-.cards {
-  background-color: black;
+.main {
+  color: #2a2d30;
   width: 50%;
-  height: 75%;
+  height: 100vh;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards,
+.card,
+.content,
+.information,
+#input {
+  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+}
+
+.cards,
+.content {
   border: 1px;
   border-radius: 1rem;
-  padding: 4 0px;
 }
 
-.card {
-  position: relative;
-  flex: 1 1 15%;
-  height: 20%;
-  display: flex;
-  background-color: #ffffff90;
-  aspect-ratio: 1/1.4;
+.content {
+  height: 75%;
+  width: 75%;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.cards {
+  background-color: #222429;
+  width: 90%;
+  height: 90%;
+  flex-wrap: wrap;
+  padding: 4px;
+  overflow: scroll;
+}
+
+.cards .card {
+  background-color: #738adb;
+  height: calc(100% / 3 - 10px);
+  width: calc(100% / 3 - 10px);
+  margin: 4px;
+  border: 1px;
   border-radius: 1rem;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  margin: 4px;`
+  cursor: pointer;
 }
 
-/* .cards :nth-child(n) {
-  background-color: ;
+.card:hover {
+  background-color: #fdfff5;
+  transition: 0.5s;
 }
 
-.cards :nth-child(2n) {
-  background-color: green;
+.information {
+  width: 100%;
+  justify-content: space-around;
 }
-.cards :nth-child(3n) {
-  background-color: yellow;
-} */
+
+#input {
+  width: 50%;
+  margin: 2px;
+  flex-direction: column;
+  align-self: center;
+}
+
+#input > * {
+  width: 100%;
+}
