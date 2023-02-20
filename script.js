@@ -60,6 +60,8 @@ cards.addEventListener("click", (e) => {
 
     //Resets Memory
     cardValue = [0, 0, 0];
+    //Shuffles Card
+    shuffleCards();
   }
 });
 
@@ -95,6 +97,7 @@ function handleInput(value) {
     }, 1000);
     //Generate Cards and Shuffle
     createCards(value);
+    shuffleCards();
   }
 }
 
@@ -121,7 +124,7 @@ function createCards(numberOfCards) {
 
   //Then Generate New Cards
   for (i = 0; i < numberOfCards; i++) {
-    console.log(numberOfCards);
+    // console.log(numberOfCards);
     cards.appendChild(fragment.cloneNode(true));
   }
 
@@ -139,9 +142,14 @@ function createCards(numberOfCards) {
       })
     );
   });
-  console.log(document.getElementsByClassName("card back"));
+  console.log(document.getElementsByClassName("card back")[0].style.order);
 }
 
 function shuffleCards() {
   __card__ = document.querySelectorAll(".card");
+  __card__.forEach((element) => {
+    let randomOrder = Math.random(__card__.length) * 10;
+    element.style.order = Math.floor(randomOrder).toString();
+    console.log(randomOrder);
+  });
 }
