@@ -16,10 +16,19 @@ cards.addEventListener("click", (e) => {
   var target = e.srcElement;
   if (target.className === "card back") {
     target.className = "card front";
+    clickCount++;
   }
 
   if (clickCount === 3) {
-    t;
+    console.log(`New Round !`);
+    clickCount = 0;
+    var flippedCards = document.querySelectorAll(".card.front");
+    console.log(flippedCards);
+    setTimeout(() => {
+      flippedCards.forEach((element) => {
+        element.className = "card back";
+      });
+    }, 1000);
   }
 });
 

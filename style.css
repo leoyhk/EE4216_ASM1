@@ -76,8 +76,16 @@ body,
   justify-content: space-around;
 }
 
+.card.front {
+  pointer-events: none;
+  background-color: #fdfff5;
+  border: 2px;
+  border-color: #738adb;
+}
+
 .card.back > div:nth-child(2) {
   display: none;
+  pointer-events: none;
 }
 
 .card.front > div {
