@@ -1,4 +1,7 @@
 console.log("Scripts loaded!");
+alert(
+  "First Time Playing?\n Enter A number down below to start playing! \n Flip 3 cards every round and try your luck!"
+);
 
 cards = document.getElementById("cards");
 const input = document.getElementById("number-of-cards");
