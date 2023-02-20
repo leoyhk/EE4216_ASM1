@@ -92,9 +92,12 @@ body,
   transform: rotateY(-0.5turn);
 }
 
+.card.back > * {
+  pointer-events: none;
+}
+
 .card.back > div:nth-child(2) {
   display: none;
-  pointer-events: none;
 }
 
 .card.front > div {
