@@ -13,14 +13,15 @@ var clickCount = 0;
 var roundCount = 1;
 var cardValue = [0, 0, 0];
 let timer = null;
+var isRoundEnd = false;
 
 cards.addEventListener("click", (e) => {
   //handles clicking on cards
   // console.log(e.srcElement);
   var target = e.srcElement;
-
+  console.log(isRoundEnd);
   //Flips card to Front and add Count
-  if (target.className === "card back") {
+  if (target.className === "card back" && !isRoundEnd) {
     target.className = "card front";
     clickCount++;
 
@@ -31,6 +32,8 @@ cards.addEventListener("click", (e) => {
 
   //Resets Card and Starts New Round
   if (clickCount === 3) {
+    isRoundEnd = true;
+
     // console.log(`New Round !`);
     roundCount++;
 
@@ -53,6 +56,7 @@ cards.addEventListener("click", (e) => {
         flippedCards.forEach((element) => {
           element.className = "card back";
         });
+        isRoundEnd = false;
         score.innerHTML = parseInt(score.innerHTML, 10) - 100;
       }, 1000);
     }
