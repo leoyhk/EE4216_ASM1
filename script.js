@@ -50,14 +50,16 @@ cards.addEventListener("click", (e) => {
         });
         //Adds Score
         score.innerHTML = parseInt(score.innerHTML, 10) + 300;
+        isRoundEnd = false;
       }, 1000);
     } else {
       setTimeout(() => {
         flippedCards.forEach((element) => {
           element.className = "card back";
         });
-        isRoundEnd = false;
+
         score.innerHTML = parseInt(score.innerHTML, 10) - 100;
+        isRoundEnd = false;
       }, 1000);
     }
 
